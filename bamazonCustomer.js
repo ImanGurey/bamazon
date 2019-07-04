@@ -1,74 +1,90 @@
-var mysql = require("mysql");
-var inquirer = require("inquirer");
-var Table = require("cli-table");
+    var mysql = require("mysql");
+    var inquirer = require("inquirer");
+    var Table = require("cli-table");
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "root",
-    database: "bamazon-db"
-});
-
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as id" + connection.threadId);
-});
-
-var displayProducts = function () {
-    var query = "Select * FROM products";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        var displayTable = new Table({
-            head: ["Item ID", "Product Name", "Catergory", "Price", "Quantity"],
-            colWidths: [10, 25, 25, 10, 14]
-        });
-        for (var i = 0; i < res.length; i++) {
-            displayTable.push(
-                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
-            );
-        }
-        console.log(displayTable.toString());
-        purchasePrompt();
+    var connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "root",
+        database: "bamazon_db"
     });
+
+var itemArray = [];
+
+function showInventory(){
+    connection.query(
+        "SELECT * FROM products",
+        function (error, response){
+            if (error){
+                console.log("There was error.")
+                return;
+            }
+            if (!error){
+                for (var i = 0; i < response.length; i++){
+                    itemArray.push({
+                        id: response[i].item_id,
+                        item: response[i].product_name,
+                        price: response[i].price,
+                        department: response[i].department_name
+                    });
+                }
+                console.table(itemArray);
+                askUser();
+            }
+        }
+    )
 }
 
-function purchasePrompt() {
+function askUser(){
     inquirer.prompt([
         {
-            name: "ID",
-            type: "input",
-            message: "Please enter Item ID you like to purhcase.",
-            filter: Number
+            type: 'input',
+            name: 'itemChoice',
+            message: 'Please enter ID of the item you wish to purchase.'
         },
         {
-            name: "Quantity",
-            type: "input",
-            message: "How many items do you wish to purchase?",
-            filter: Number
-        },
-
-    ]).then(function (answers) {
-        var quantityNeeded = answers.Quantity;
-        var IDrequested = answers.ID;
-        purchaseOrder(IDrequested, quantityNeeded);
-    });
+            type: 'input',
+            name: 'quantity',
+            message: 'How many would you like to buy?'
+        }
+    ]).then(function(answer){
+        var item = parseInt(answer.itemChoice);
+        var quantity = answer.quantity;
+        connection.query(`SELECT * FROM products WHERE item_id = ${item}`, function (error, response){
+            if (error){
+                console.log("There was an error.");
+                return;
+            }else {
+                productData = response[0];
+                if (productData.stock_quantity > quantity){
+                    console.log(`Absolutely! We have ${productData.product_name} in stock!`)
+                    var newTotal = productData.stock_quantity - quantity
+                    var price = quantity*productData.price
+                    connection.query(`UPDATE products SET stock_quantity = ${newTotal} WHERE item_id = ${item}`, function(error, response){
+                        if (error){
+                            console.log("Quantity update failed.");
+                            return;
+                        }else{
+                            console.log(`Your total cost is $${price}.`)
+                            var newSales = productData.product_sales + price
+                            connection.query(`UPDATE products SET product_sales = ${newSales} WHERE item_id = ${item}`, function(error, response){
+                                if (error){
+                                    console.log("Quantity update failed.");
+                                    return;
+                                }else{
+                                    askUser();
+                                }
+                            })
+                        }
+                    })
+                }else{
+                    console.log(`We apologize, but we only have ${productData.stock_quantity} in stock!`)
+                    askUser();
+                }
+            }
+        })
+    })
 };
 
-function purchaseOrder(ID, amtNeeded) {
-    connection.query('Select * FROM products WHERE item_id = ' + ID, function (err, res) {
-        if (err) { console.log(err) };
-        if (amtNeeded <= res[0].stock_quantity) {
-            var totalCost = res[0].price * amtNeeded;
-            console.log("Good news your order is in stock!");
-            console.log("Your total cost for " + amtNeeded + " " + res[0].product_name + " is " + totalCost + " Thank you!");
-
-            connection.query("UPDATE products SET stock_quantity = stock_quantity - " + amtNeeded + "WHERE item_id = " + ID);
-        } else {
-            console.log("Insufficient quantity, sorry we do not have enough " + res[0].product_name + "to complete your order.");
-        };
-        displayProducts();
-    });
-};
-
-displayProducts(); 
+showInventory();
