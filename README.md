@@ -71,7 +71,7 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 1. View Products for Sale
 
 
-![](images/ ScreenShot1.png
+![](images/ ScreenShot1.png)
 
 
 
