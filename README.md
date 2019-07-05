@@ -45,8 +45,7 @@ As a customer, you can check items (products) that are for sale and buy them.
 To buy an item, enter the item ID and quantity. You will get the subtotal.
 
 
-![](images/SceenShot4.png)
-
+![](images/ScreenShot4.png)
 
 
 Note, you can buy an item only up to the stock quantity.
@@ -84,4 +83,4 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 3. Add New Product (Create and a new entry to the mySQL database)
 
 
-[](images/ScreenShot3.png)
+![](images/ScreenShot3.png)
