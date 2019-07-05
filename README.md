@@ -28,8 +28,7 @@ To run Bamazon, you will need Terminal, Node, npm, and MySQL Workbench.
 Demos - Customer
 
 As a customer, you can check items (products) that are for sale and buy them.
-
-## ![Completed Sale](images/github-completedSale.jpg)
+<img src= "images/github-completedSale.jpg" width ="150">
 
 
 To buy an item, enter the item ID and quantity. You will get the subtotal.
