@@ -45,7 +45,7 @@ As a customer, you can check items (products) that are for sale and buy them.
 To buy an item, enter the item ID and quantity. You will get the subtotal.
 
 
-![](images/SceenShot4.jpg)
+![](images/SceenShot4.png)
 
 
 
@@ -71,7 +71,7 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 1. View Products for Sale
 
 
-![](images/ ScreenShot1.png)
+![](images/ScreenShot1.png)
 
 
 
