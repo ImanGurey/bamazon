@@ -28,6 +28,8 @@ To run Bamazon, you will need Terminal, Node, npm, and MySQL Workbench.
 Demos - Customer
 
 As a customer, you can check items (products) that are for sale and buy them.
+
+
 ![]("images/completedSales.jpg")
 
 
