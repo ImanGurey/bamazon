@@ -30,10 +30,11 @@ Demos - Customer
 As a customer, you can check items (products) that are for sale and buy them.
 
 
+To buy an item, enter the item ID and quantity. You will get the subtotal.
+
+
 ![](images/completedSales.jpg)
 
-
-To buy an item, enter the item ID and quantity. You will get the subtotal.
 
 
 Note, you can buy an item only up to the stock quantity.
