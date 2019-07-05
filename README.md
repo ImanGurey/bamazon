@@ -29,7 +29,7 @@ Demos - Customer
 
 As a customer, you can check items (products) that are for sale and buy them.
 
-## ![Completed Sale](../images/completedSale.jpg)
+## ![Completed Sale] (img src= "images/completedSale.jpg")
 
 
 To buy an item, enter the item ID and quantity. You will get the subtotal.
