@@ -17,7 +17,7 @@ cli-table   NPM Package
 
 
 
-How to Run
+##How to Run
 
 To run Bamazon, you will need Terminal, Node, npm, and MySQL Workbench.
 
@@ -45,7 +45,7 @@ As a customer, you can check items (products) that are for sale and buy them.
 To buy an item, enter the item ID and quantity. You will get the subtotal.
 
 
-![](images/completedSales.jpg)
+![](images/SceenShot4.jpg)
 
 
 
@@ -70,7 +70,9 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 
 1. View Products for Sale
 
+
 ![](images/ ScreenShot1.png
+
 
 
 2. Add to Inventory (Takes current inventory and updates quantity)
@@ -78,8 +80,8 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 ![](images/ScreenShot2.png)
 
 
+
 3. Add New Product (Create and a new entry to the mySQL database)
 
+
 [](images/ScreenShot3.png)
-
-
