@@ -4,7 +4,17 @@ Bamazon is a CRM that focuses on sales. It provides command-line interfaces for 
 
 
 Technologies Used
-  Node, MySQL
+  
+Node.js
+
+Inquirer NPM Package
+
+MySQL NPM Package
+
+Console.table NPM Package
+
+cli-table   NPM Package
+
 
 
 How to Run
@@ -51,6 +61,25 @@ At the end, you can see all items that you purchased.
 Demos - Manager
 
 
-## ![](images/screen shot 1.png
+The manager interface allows the user to:
+
+To use the customer interface, simply type node bamazonManager.js in Terminal.
+
+
+
+
+1. View Products for Sale
+
+![](images/ ScreenShot1.png
+
+
+2. Add to Inventory (Takes current inventory and updates quantity)
+
+![](images/ScreenShot2.png)
+
+
+3. Add New Product (Create and a new entry to the mySQL database)
+
+[](images/ScreenShot3.png)
 
 
