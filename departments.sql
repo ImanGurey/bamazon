@@ -60,12 +60,12 @@ CREATE TABLE departments
     
     
     ALTER TABLE departments
-ADD COLUMN product_sales INT AFTER over_head_costs;
+    ADD COLUMN product_sales INT AFTER over_head_costs;
 
-ALTER TABLE departments
-ADD COLUMN total_profit INT AFTER product_sales;
+    ALTER TABLE departments
+    ADD COLUMN total_profit INT AFTER product_sales;
 
-SELECT
+    SELECT
     *
-FROM
+    FROM
     departments;

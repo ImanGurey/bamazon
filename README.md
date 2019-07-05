@@ -29,8 +29,7 @@ Demos - Customer
 
 As a customer, you can check items (products) that are for sale and buy them.
 
-## ![Completed Sale](images/github-completedSale.jpg)
-
+## ![](images/completedSales.jpg)
 
 To buy an item, enter the item ID and quantity. You will get the subtotal.
 
