@@ -50,6 +50,6 @@ At the end, you can see all items that you purchased.
 
 Demos - Manager
 
- ![](images/screenShot1.png)
+ ![](images/ScreenShot1.png)
 
 
