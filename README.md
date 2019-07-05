@@ -81,5 +81,3 @@ To use the customer interface, simply type node bamazonManager.js in Terminal.
 3. Add New Product (Create and a new entry to the mySQL database)
 
 [](images/ScreenShot3.png)
-
-
